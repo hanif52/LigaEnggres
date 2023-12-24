@@ -1,5 +1,6 @@
 package com.example.ligaenggres.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class ClubAdapter : RecyclerView.Adapter<ClubAdapter.ListViewHolder>() {
     private var listData = ArrayList<Club>()
     var onItemClick: ((Club) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Club>?) {
         if (newListData == null) return
         listData.clear()

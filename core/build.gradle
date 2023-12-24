@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
 }
 apply from: '../shared_dependencies.gradle'
 
@@ -45,7 +46,7 @@ dependencies {
 
     //room
     implementation "androidx.room:room-runtime:2.6.1"
-    kapt "androidx.room:room-compiler:2.6.1"
+    ksp "androidx.room:room-compiler:2.6.1"
     androidTestImplementation "androidx.room:room-testing:2.6.1"
 
     //retrofit
