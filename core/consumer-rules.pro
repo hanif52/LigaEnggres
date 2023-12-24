@@ -111,3 +111,4 @@
 -keep class com.example.ligaenggres.core.data.source.remote.response.** { *; }
 -keep class com.example.ligaenggres.favorite.** { *; }
 
+
