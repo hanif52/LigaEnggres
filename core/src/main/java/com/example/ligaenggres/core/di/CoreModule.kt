@@ -8,8 +8,10 @@ import com.example.ligaenggres.core.data.source.remote.RemoteDataSource
 import com.example.ligaenggres.core.data.source.remote.network.ApiService
 import com.example.ligaenggres.core.domain.repository.IClubRepository
 import com.example.ligaenggres.core.utils.AppExecutors
+import net.sqlcipher.BuildConfig
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -25,7 +27,7 @@ val databaseModule = module {
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            ClubDatabase::class.java, "Club.db"
+            ClubDatabase::class.java, "Club"
         ).fallbackToDestructiveMigration()
             .openHelperFactory(factory)
             .build()
@@ -34,10 +36,24 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostname = "thesportsdb.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/ljTDgm/k397r3IdZEKRul2NCPhqITZKGW8ue2nIVaGc=")
+            .add(hostname, "sha256/FEzVOUp4dF3gI0ZVPRJhFbSJVXR+uQmMH65xhs1glH4=")
+            .add(hostname, "sha256/Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o=")
+            .build()
+
+        val loggingInterceptor = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        } else {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
+
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(loggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RemoteDataSource(private val apiService: ApiService, private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+class RemoteDataSource(private val apiService: ApiService) {
 
     suspend fun getAllClub(): Flow<ApiResponse<List<ClubResponse>>> {
         return flow {
@@ -26,7 +26,7 @@ class RemoteDataSource(private val apiService: ApiService, private val dispatche
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
-        }.flowOn(dispatcher)
+        }.flowOn(Dispatchers.IO)
     }
 }
 
