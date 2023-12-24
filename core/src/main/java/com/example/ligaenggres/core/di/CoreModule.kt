@@ -8,6 +8,8 @@ import com.example.ligaenggres.core.data.source.remote.RemoteDataSource
 import com.example.ligaenggres.core.data.source.remote.network.ApiService
 import com.example.ligaenggres.core.domain.repository.IClubRepository
 import com.example.ligaenggres.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -19,10 +21,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<ClubDatabase>().clubDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("ligainggris".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             ClubDatabase::class.java, "Club.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 

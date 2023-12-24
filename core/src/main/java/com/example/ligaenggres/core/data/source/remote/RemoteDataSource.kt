@@ -4,12 +4,13 @@ import android.util.Log
 import com.example.ligaenggres.core.data.source.remote.network.ApiResponse
 import com.example.ligaenggres.core.data.source.remote.network.ApiService
 import com.example.ligaenggres.core.data.source.remote.response.ClubResponse
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RemoteDataSource(private val apiService: ApiService) {
+class RemoteDataSource(private val apiService: ApiService, private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
     suspend fun getAllClub(): Flow<ApiResponse<List<ClubResponse>>> {
         return flow {
@@ -25,7 +26,7 @@ class RemoteDataSource(private val apiService: ApiService) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(dispatcher)
     }
 }
 

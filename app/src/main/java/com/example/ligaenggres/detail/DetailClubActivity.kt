@@ -10,10 +10,6 @@ import com.example.ligaenggres.databinding.ActivityDetailClubBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailClubActivity : AppCompatActivity() {
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
-
     private val detailClubViewModel: DetailClubViewModel by viewModel()
     private lateinit var binding: ActivityDetailClubBinding
 
@@ -54,4 +50,9 @@ class DetailClubActivity : AppCompatActivity() {
             binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_not_favorite_white))
         }
     }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
+    }
+
 }
