@@ -25,8 +25,8 @@ class DetailClubActivity : AppCompatActivity() {
 
     private fun showDetailClub(detailClub: Club?) {
         detailClub?.let {
-            supportActionBar?.title = detailClub.name
-            binding.content.tvDetailDescription.text = detailClub.description
+            binding.tvDetailName.text = detailClub.name
+            binding.tvDetailDescription.text = detailClub.description
             Glide.with(this@DetailClubActivity)
                 .load(detailClub.image)
                 .into(binding.ivDetailImage)
