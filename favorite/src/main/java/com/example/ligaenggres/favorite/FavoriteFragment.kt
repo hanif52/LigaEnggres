@@ -40,10 +40,13 @@ class FavoriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favoriteViewModel.favoriteClub.observe(viewLifecycleOwner, { dataClub ->
-                clubAdapter.setData(dataClub)
-                binding.viewEmpty.root.visibility = if (dataClub.isNotEmpty()) View.GONE else View.VISIBLE
-            })
+            favoriteViewModel.favoriteClub.observe(viewLifecycleOwner) { dataClub ->
+                if (dataClub != null) {
+                    clubAdapter.setData(dataClub)
+                }
+                binding.viewEmpty.root.visibility =
+                    if (dataClub.isNotEmpty()) View.GONE else View.VISIBLE
+            }
 
             with(binding.rvTourism) {
                 layoutManager = LinearLayoutManager(context)

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.ligaenggres.R
 import com.example.ligaenggres.core.domain.model.Club
 import com.example.ligaenggres.databinding.ActivityDetailClubBinding
@@ -18,8 +19,6 @@ class DetailClubActivity : AppCompatActivity() {
         binding = ActivityDetailClubBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-
         val detailClub = intent.getParcelableExtra<Club>(EXTRA_DATA)
         showDetailClub(detailClub)
     }
@@ -30,7 +29,6 @@ class DetailClubActivity : AppCompatActivity() {
             binding.content.tvDetailDescription.text = detailClub.description
             Glide.with(this@DetailClubActivity)
                 .load(detailClub.image)
-                .fitCenter()
                 .into(binding.ivDetailImage)
 
             var statusFavorite = detailClub.isFavorite

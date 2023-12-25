@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.LigaEnggres" parent="Base.Theme.LigaEnggres" />
+    <style name="Theme.LigaEnggres.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

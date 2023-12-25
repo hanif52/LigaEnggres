@@ -25,9 +25,8 @@ class ClubRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Club>?): Boolean =
-//                data == null || data.isEmpty()
-                 true // ganti dengan true jika ingin selalu mengambil data dari internet
+            override fun shouldFetch(data: List<Club>?): Boolean = data.isNullOrEmpty()
+
 
             override suspend fun createCall(): Flow<ApiResponse<List<ClubResponse>>> =
                 remoteDataSource.getAllClub()

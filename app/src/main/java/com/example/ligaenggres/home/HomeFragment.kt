@@ -14,18 +14,16 @@ import com.example.ligaenggres.databinding.FragmentHomeBinding
 import com.example.ligaenggres.detail.DetailClubActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModel()
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding ?: throw IllegalStateException("Fragment view not initialized yet.")
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -67,10 +65,5 @@ class HomeFragment : Fragment() {
             }
         }
 
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
