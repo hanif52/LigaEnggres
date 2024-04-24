@@ -8,6 +8,5 @@ This app implements the following:
 * Encrypting the database
 * Implementing Dependency Injection using Koin
 
-| ![Home](https://drive.google.com/uc?export=view&id=1frk3f2G7hDvlakaPjv_gMzcwlmbbY76o)|![Detail](https://drive.google.com/uc?export=view&id=10thVZNnBE19Utln7nXFQuF2ZCbkOQEoS) | ![Navigation](https://drive.google.com/uc?export=view&id=12Kae7uHDYn46roXawMQr3BSPXX8c9NmP) |
+| ![Home](https://drive.google.com/uc?export=view&id=1frk3f2G7hDvlakaPjv_gMzcwlmbbY76o)|![Detail](https://drive.google.com/uc?export=view&id=1flngOOqwPaOcMVhEzpvbrnRhiOrglDw9) | ![Navigation](https://drive.google.com/uc?export=view&id=1MutRS1HEosmmnnFnCat3MycKm01I3DJl) |
 | --- | --- | --- |
-https://drive.google.com/file/d/
