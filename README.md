@@ -2,3 +2,12 @@
 
 Submisi Android Expert Dicoding. <br>
 Aufa Hanif
+
+This app implements the following:
+* Applying clean architecture to the code
+* Encrypting the database
+* Implementing Dependency Injection using Koin
+
+| ![Home](https://drive.google.com/uc?export=view&id=1frk3f2G7hDvlakaPjv_gMzcwlmbbY76o)|![Detail](https://drive.google.com/uc?export=view&id=10thVZNnBE19Utln7nXFQuF2ZCbkOQEoS) | ![Navigation](https://drive.google.com/uc?export=view&id=12Kae7uHDYn46roXawMQr3BSPXX8c9NmP) |
+| --- | --- | --- |
+https://drive.google.com/file/d/
